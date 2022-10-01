@@ -9,10 +9,12 @@ phase_shift = np.pi
 a = 3
 b = 4
 
+
 def init():
     ax.set_xlim(-1, 1)
     ax.set_ylim(-1, 1)
     return ln,
+
 
 def update(frame):
     xdata.append(np.sin(a*frame + phase_shift))
