@@ -31,15 +31,35 @@ void dataCount(double x0, double v0, double omega, double dt, int numb_of_tests)
     }
 
     fout.close();
+
+    fout.open("Vtable.txt");
+
+    for(int i = 0; i < numb_of_tests; i++)
+    {
+        fout<<Vdata[i]<<"   "<<endl;
+    }
+
+    fout.close();
+
+    fout.open("EnergyTable.txt");
+
+    for(int i = 0; i < numb_of_tests; i++)
+    {
+
+        fout<<0.5*fma(-1*constant, Xdata[i]*Xdata[i], Vdata[i]*Vdata[i])<<"   "<<endl;
+    }
+
+    fout.close();
 }
 
 int main()
 {
-    double X0 = 1.d;
-    double V0 = 0.d;
-    double omega = 1.d;
-    double dt = 0.1;
-    int num_of_tests = 9000;
+    ifstream fin;
+    fin.open("data.txt");
+    double X0, V0, omega, dt;
+    long long num_of_tests;
+    fin>>X0>>V0>>omega>>dt>>num_of_tests;
+    fin.close();
     dataCount(X0, V0, omega, dt, num_of_tests);
     return 0;
 }
